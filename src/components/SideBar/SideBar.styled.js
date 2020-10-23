@@ -1,12 +1,17 @@
 import styled from 'styled-components';
+import logoImage from '../../assets/images/bc-logo.png'
 
 const SideBarTitle = styled.div`
+  background-image: url(${logoImage});
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center center;
   display: flex;
-  justify-content: center;
-  padding: 10px;
+  height: 32px;
+  justify-content: left;
+  padding: 0 12px;
   margin: 24px 0;
-  font-weight: bolder;
-  color: #9798aa;
+  width: 32px;
 `;
 
 const SideBarItem = styled.div`

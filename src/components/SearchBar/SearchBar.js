@@ -13,7 +13,7 @@ function Search({ handler, value }) {
       <SearchInput
         onChange={handler}
         value={value}
-        placeholder='Search Movies'
+        placeholder='Search User Repositories'
       />
     </SearchBarContainer>
   );

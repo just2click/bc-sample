@@ -18,14 +18,20 @@ import {
 
 Constants.FuseOptions.keys = ['title'];
 
+const RepoList = () => {
+  const [arrayItems, setArrayItems] = useSearch([]);
+}
+
 function Main() {
   const [movies, setMovies] = useState({});
+  const [repos, setRepos] = useState({});
   const [movieType, setMovieType] = useState();
 
   useEffect(() => {
     try {
       (async () => {
-        const popularMovies = await Get.movies('now_playing');
+        debugger;
+        const popularMovies = await Get.repos('just2click');
         setMovies(state => {
           const newState = { ...state };
           newState.now_playing = popularMovies.data.results;
@@ -39,12 +45,14 @@ function Main() {
   }, []);
 
   const fetch = async what => {
+    console.log('what? ', what);
     const split = what.split(' ');
     const type = split.reduce((acc, curr, i) => {
       return acc
         .concat(curr.toLowerCase())
         .concat(i !== split.length - 1 ? '_' : '');
     }, '');
+    console.log('type? ', type)
     if (!movies[type]) {
       const fetchedMovies = await Get.movies(type);
       setMovies(state => {

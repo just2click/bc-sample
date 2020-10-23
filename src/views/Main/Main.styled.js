@@ -6,8 +6,8 @@ const RootContainer = styled.div`
   display: inline-flex;
 `;
 const SideBarSection = styled.section`
-  width: 20%;
-  background-color: white;
+  width: 4%;
+  background-color: #271C6F;
   box-shadow: 3px 0 15px #e5e9f0;
 `;
 

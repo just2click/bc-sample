@@ -20,7 +20,7 @@ function SideBar({ handler }) {
 
   return (
     <>
-      <SideBarTitle>MovieTracker</SideBarTitle>
+      <SideBarTitle></SideBarTitle>
       {Constants.SideBarItems.map((val, i) => {
         const key = i;
         return (
@@ -36,9 +36,6 @@ function SideBar({ handler }) {
               <ItemIcon color={(toggleStatus[i] && '#A1A3B2') || undefined}>
                 {val.icon}
               </ItemIcon>
-              <ItemText color={(toggleStatus[i] && '#A1A3B2') || undefined}>
-                {val.text}
-              </ItemText>
             </ItemContainer>
           </SideBarItem>
         );

@@ -7,4 +7,10 @@ const movies = type => {
   );
 };
 
-export default { movies };
+const repos = user => {
+  return axios.get(
+    `${Constants.GIT_REQUEST_URL}${user}/repos`
+  )
+}
+
+export default { movies, repos };
