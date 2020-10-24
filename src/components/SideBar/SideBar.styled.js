@@ -21,17 +21,12 @@ const SideBarItem = styled.div`
 `;
 
 const ItemContainer = styled.div`
+  background-color: ${props => (props.bg ? props.bg : '#271C6F')};
   width: 100%;
   height: 100%;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-`;
-
-const ItemActiveTick = styled.div`
-  width: 3px;
-  height: 100%;
-  background-color: ${props => (props.bg ? props.bg : 'white')};
 `;
 
 const ItemIcon = styled.div`
@@ -56,7 +51,6 @@ export {
   SideBarTitle,
   SideBarItem,
   ItemContainer,
-  ItemActiveTick,
   ItemIcon,
   ItemText
 };

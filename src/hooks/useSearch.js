@@ -2,7 +2,23 @@ import { useState } from 'react';
 import Fuse from 'fuse.js';
 
 function search({ fuse, data, term }) {
-  const results = fuse.search(term);
+  let results = [];
+  if (fuse.list) {
+    results = fuse.search(term);
+    return term ? results : data;
+  }
+
+  if (data && data.length > 0) {
+    const index = data && data[0].name ? 0 : 1
+    const key = fuse && fuse.options && fuse.options.keys ? fuse.options.keys[index] : ''
+
+    if (key && term !== '') {
+      results = data.filter(element => {
+        const value = element[key].toLowerCase()
+        return value.includes(term.toLowerCase())
+      });
+    }
+  }
   return term ? results : data;
 }
 
