@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import SideBar from '../../components/SideBar';
 import Search from '../../components/SearchBar';
-import MoviesGrid from '../../components/Grid';
+import Grid from '../../components/Grid';
 
 import Get from '../../api/Get';
 import Constants from '../../utils/Constants';
@@ -12,26 +12,27 @@ import {
   RootContainer,
   SideBarSection,
   ContentSection,
-  MoviesGridSection,
-  SearchBarSection
+  ItemsGridSection,
+  SearchBarSection,
+  MainSection
 } from './Main.styled';
 
-Constants.FuseOptions.keys = ['title'];
+Constants.FuseOptions.keys = ['name', 'title'];
 
 function Main() {
-  const [movies, setMovies] = useState({});
-  const [movieType, setMovieType] = useState();
+  const [items, setItems] = useState({});
+  const [dataType, setDataType] = useState();
 
   useEffect(() => {
     try {
       (async () => {
-        const popularMovies = await Get.movies('now_playing');
-        setMovies(state => {
+        const userData = await Get.userItems('repos');
+        setItems(state => {
           const newState = { ...state };
-          newState.now_playing = popularMovies.data.results;
+          newState.repos = userData.data;
           return newState;
         });
-        setMovieType('now_playing');
+        setDataType('repos');
       })();
     } catch (e) {
       console.log({ e });
@@ -45,19 +46,21 @@ function Main() {
         .concat(curr.toLowerCase())
         .concat(i !== split.length - 1 ? '_' : '');
     }, '');
-    if (!movies[type]) {
-      const fetchedMovies = await Get.movies(type);
-      setMovies(state => {
+    if (!items[type]) {
+      const userData = await Get.userItems(type);
+      const data = type === 'repos' ? userData.data : userData.data.items
+      setItems(state => {
         const newState = { ...state };
-        newState[type] = fetchedMovies.data.results;
+        newState[type] = data;
         return newState;
       });
     }
-    setMovieType(type);
+    setDataType(type);
   };
 
-  const { results, search, searchTerm } = useSearch({
-    data: movies[movieType],
+  const { results, search, searchTerm, placeholder } = useSearch({
+    data: items[dataType],
+    placeholder: dataType,
     options: Constants.FuseOptions
   });
 
@@ -68,12 +71,15 @@ function Main() {
       </SideBarSection>
       <ContentSection>
         <SearchBarSection>
-          <Search handler={e => search(e.target.value)} value={searchTerm} />
+          <Search handler={e => search(e.target.value)} value={searchTerm} placeholder={placeholder} />
         </SearchBarSection>
-        <MoviesGridSection>
-          <MoviesGrid items={results} />
-        </MoviesGridSection>
+        <ItemsGridSection>
+          <Grid items={results} />
+        </ItemsGridSection>
       </ContentSection>
+      <MainSection>
+
+      </MainSection>
     </RootContainer>
   );
 }

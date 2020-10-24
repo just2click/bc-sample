@@ -3,12 +3,15 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.32",
+        "@fortawesome/free-solid-svg-icons": "^5.15.1",
+        "@fortawesome/react-fontawesome": "^0.1.11",
         "axios": "^0.20.0",
         "fuse.js": "^6.4.2",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
-        "react-icons": "3.8.0",
         "react-focus-lock": "^2.0.5",
+        "react-icons": "^3.11.0",
         "react-scripts": "3.1.1",
         "styled-components": "^4.3.2"
     },
@@ -32,5 +35,6 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    }
+    },
+    "devDependencies": {}
 }

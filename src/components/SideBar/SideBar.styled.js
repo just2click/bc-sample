@@ -1,12 +1,17 @@
 import styled from 'styled-components';
+import logoImage from '../../assets/images/bc-logo.png'
 
 const SideBarTitle = styled.div`
+  background-image: url(${logoImage});
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center center;
   display: flex;
-  justify-content: center;
-  padding: 10px;
+  height: 32px;
+  justify-content: left;
+  padding: 0 12px;
   margin: 24px 0;
-  font-weight: bolder;
-  color: #9798aa;
+  width: 32px;
 `;
 
 const SideBarItem = styled.div`
@@ -16,17 +21,12 @@ const SideBarItem = styled.div`
 `;
 
 const ItemContainer = styled.div`
+  background-color: ${props => (props.bg ? props.bg : '#271C6F')};
   width: 100%;
   height: 100%;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-`;
-
-const ItemActiveTick = styled.div`
-  width: 3px;
-  height: 100%;
-  background-color: ${props => (props.bg ? props.bg : 'white')};
 `;
 
 const ItemIcon = styled.div`
@@ -51,7 +51,6 @@ export {
   SideBarTitle,
   SideBarItem,
   ItemContainer,
-  ItemActiveTick,
   ItemIcon,
   ItemText
 };

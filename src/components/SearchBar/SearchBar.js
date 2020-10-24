@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { SearchBarContainer, SearchIcon, SearchInput } from './SearchBar.styled';
 
-function Search({ handler, value }) {
+function Search({ handler, value, placeholder }) {
   return (
     <SearchBarContainer>
       <SearchIcon>
@@ -13,7 +13,7 @@ function Search({ handler, value }) {
       <SearchInput
         onChange={handler}
         value={value}
-        placeholder='Search Movies'
+        placeholder={placeholder}
       />
     </SearchBarContainer>
   );
@@ -21,12 +21,14 @@ function Search({ handler, value }) {
 
 Search.propTypes = {
   handler: PropTypes.func,
-  value: PropTypes.string
+  value: PropTypes.string,
+  placeholder: PropTypes.string,
 };
 
 Search.defaultProps = {
   handler: () => {},
-  value: ''
+  value: '',
+  placeholder: 'Search for ...'
 };
 
 export default Search;

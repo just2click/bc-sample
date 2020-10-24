@@ -4,25 +4,26 @@ import PropTypes from 'prop-types';
 import {
   Container,
   Content,
-  Image,
   Text,
   FAB,
   Separator,
   Button
 } from './Item.styled';
 
-function Item({ image, title, overview, ratings }) {
+function Item({ title, defaultBranch, language, owner }) {
   return (
     <Container>
-      <Image image={image} />
       <Content>
         <Text weight='bolder' relative>
-          {title}
+          Name: {title}
         </Text>
         <Text color='#BFC0CE' height>
-          {overview}
+          {defaultBranch}
         </Text>
-        <FAB>{ratings}</FAB>
+        { language &&  language.length && <FAB>{language}</FAB> }
+        <Text relative>
+          Owner: {owner}
+        </Text>
         <Separator />
         <Button>Details</Button>
       </Content>

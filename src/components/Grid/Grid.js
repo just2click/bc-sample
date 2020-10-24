@@ -5,8 +5,6 @@ import Item from '../Item';
 
 import GridStyled from './Grid.styled';
 
-import Constants from '../../utils/Constants';
-
 function Grid({ items }) {
   return (
     <GridStyled>
@@ -15,10 +13,10 @@ function Grid({ items }) {
         return (
           <Item
             key={idx}
-            title={item.title}
-            image={`${Constants.IMAGE_URL}/${item.poster_path}`}
-            overview={item.overview}
-            ratings={item.vote_average}
+            title={item.name ? item.name : item.title}
+            defaultBranch={item.default_branch ? item.default_branch : item.state}
+            language={item.language ? item.language : item.id.toString()}
+            owner={item.owner ? item.owner.login : item.user.login}
           />
         );
       })}

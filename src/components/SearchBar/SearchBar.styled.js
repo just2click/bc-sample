@@ -31,6 +31,10 @@ const SearchInput = styled.input`
   color: #9d9fb0;
   font-size: 14px;
   font-weight: bolder;
+  &:focus {
+    outline: none;
+    border-color: red;
+  }
 `;
 
 export { SearchBarContainer, SearchIcon, SearchInput };

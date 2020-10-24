@@ -4,10 +4,8 @@ import PropTypes from 'prop-types';
 import {
   SideBarTitle,
   SideBarItem,
-  ItemActiveTick,
   ItemContainer,
-  ItemIcon,
-  ItemText
+  ItemIcon
 } from './SideBar.styled';
 
 import Constants from '../../utils/Constants';
@@ -20,25 +18,22 @@ function SideBar({ handler }) {
 
   return (
     <>
-      <SideBarTitle>MovieTracker</SideBarTitle>
+      <SideBarTitle></SideBarTitle>
       {Constants.SideBarItems.map((val, i) => {
         const key = i;
         return (
           <SideBarItem key={key}>
             <ItemContainer
+              bg={toggleStatus[i] && '#5233B6'}
               onClick={() => {
                 handler(val.text);
                 setToggleStatus(status => {
                   return status.map((s, idx) => i === idx);
                 });
               }}>
-              <ItemActiveTick bg={toggleStatus[i] && '#3CE7F5'} />
               <ItemIcon color={(toggleStatus[i] && '#A1A3B2') || undefined}>
                 {val.icon}
               </ItemIcon>
-              <ItemText color={(toggleStatus[i] && '#A1A3B2') || undefined}>
-                {val.text}
-              </ItemText>
             </ItemContainer>
           </SideBarItem>
         );
